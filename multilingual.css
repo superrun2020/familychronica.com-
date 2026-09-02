@@ -1,0 +1,13 @@
+.login-language{position:absolute;right:35px;top:28px;display:flex;align-items:center;gap:6px;color:#184f43}
+.login-language select{height:38px;border:1px solid #d8d5cc;background:#fff;padding:0 12px;color:#18201e;font-weight:700}
+.login-language span{font-size:18px}
+.language-picker select{max-width:132px}
+html[lang="zh-CN"] body{font-family:"DM Sans","PingFang SC","Microsoft YaHei",sans-serif}
+html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3,html[lang="zh-CN"] h4{font-family:"Newsreader","Songti SC","Noto Serif SC",serif}
+html[lang="es"] .desktop-nav{gap:15px}
+html[lang="es"] .hero h1{max-width:980px}
+html[lang="de"] .desktop-nav,html[lang="ru"] .desktop-nav{gap:12px}
+html[lang="ar"] body{direction:rtl}
+html[lang="ar"] .brand,html[lang="ar"] .header-actions,html[lang="ar"] .language-picker{direction:ltr}
+html[lang="ar"] main,html[lang="ar"] .site-footer{direction:rtl}
+@media(max-width:640px){.login-language{right:20px;top:20px}.login-language span{display:none}.header-actions{gap:7px}.header-actions>.icon-button{display:none}.language-picker select{max-width:88px;padding-left:5px;padding-right:5px}}

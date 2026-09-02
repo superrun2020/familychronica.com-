@@ -1,0 +1,27 @@
+export const seoRoutes={
+  '/':{title:'FamilyChronica | Preserve Your Family History',description:'Record family stories, organize photographs, preserve voices and videos, and create a lasting family chronicle.'},
+  '/features':{title:'Family History App Features | FamilyChronica',description:'Explore voice interviews, family timelines, smart albums, living books, privacy controls, and collaborative family archives.'},
+  '/how-it-works':{title:'How to Create a Family Chronicle | FamilyChronica',description:'Turn family interviews, photographs, recordings, and memories into a private digital archive and printed family history.'},
+  '/albums':{title:'Smart Family Photo Albums | FamilyChronica',description:'Organize old family photographs, identify people and places, add context, and preserve albums for future generations.'},
+  '/ai-interview':{title:'Guided Family History Interviews | FamilyChronica',description:'Use gentle interview prompts, voice recording, transcription, and editable AI assistance to preserve authentic family stories.'},
+  '/for-parents':{title:'Preserve Your Parents’ Life Stories | FamilyChronica',description:'Help a parent or grandparent record memories with accessible prompts, voice-first tools, and family review.'},
+  '/for-families':{title:'A Shared Private Family Archive | FamilyChronica',description:'Invite relatives to contribute stories, photographs, recordings, and family history with clear roles and privacy controls.'},
+  '/gift':{title:'Give a Family History Gift | FamilyChronica',description:'Give parents and grandparents a meaningful guided family chronicle, voice archive, or printed family history edition.'},
+  '/sample-book':{title:'Family Chronicle Book Sample | FamilyChronica',description:'Preview how family stories, photographs, timelines, sources, and a family tree become a lasting printed chronicle.'},
+  '/pricing':{title:'FamilyChronica Plans and Pricing',description:'Compare free, personal, and family plans for recording, video storage, AI-assisted writing, collaboration, and family history books.'},
+  '/store':{title:'Family History Books and Archive Editions | FamilyChronica',description:'Choose a text chronicle, photo family history, audio tape, video tape, archive disc, or encrypted family archive USB.'},
+  '/app':{title:'FamilyChronica App | Record and Preserve Family Stories',description:'Record family voices, photos, and videos in one private app. Invite relatives and turn shared memories into a lasting family chronicle.'},
+  '/security':{title:'Privacy, Encryption and Trust | FamilyChronica',description:'Learn about FamilyChronica privacy controls, encryption design, integrity proofing, data resilience, access auditing, and recovery.'},
+  '/blog':{title:'Family History Guides and Story Ideas | FamilyChronica',description:'Practical guides for interviewing relatives, organizing old photographs, recording family voices, and preserving family history.'},
+  '/support':{title:'FamilyChronica Help Center and FAQ',description:'Get answers about family accounts, privacy, AI assistance, subscriptions, books, invitations, recordings, and account access.'},
+  '/about':{title:'About FamilyChronica',description:'FamilyChronica helps ordinary families preserve voices, photographs, memories, relationships, and stories across generations.'},
+  '/privacy':{title:'Privacy Policy | FamilyChronica',description:'Understand how FamilyChronica handles account information, family content, recordings, media, AI assistance, and privacy choices.'},
+  '/terms':{title:'Terms of Service | FamilyChronica',description:'Read the terms governing FamilyChronica subscriptions, family contributions, digital archives, and printed products.'},
+  '/shipping-returns':{title:'Shipping and Returns | FamilyChronica',description:'Learn how FamilyChronica book approval, production, delivery, damage claims, corrections, and returns are handled.'},
+  '/accessibility':{title:'Accessibility | FamilyChronica',description:'Learn how FamilyChronica supports large text, keyboard access, transcripts, clear feedback, and assisted family participation.'},
+  '/login':{title:'Sign In | FamilyChronica',description:'Sign in securely with your email to access your private family chronicle.',noindex:true},
+  '/signup':{title:'Create an Account | FamilyChronica',description:'Create a private FamilyChronica account using secure email verification.',noindex:true},
+  '/dashboard':{title:'Family Workspace | FamilyChronica',description:'Private FamilyChronica workspace.',noindex:true}
+};
+
+export const publicSeoRoutes=Object.entries(seoRoutes).filter(([,meta])=>!meta.noindex).map(([path])=>path);

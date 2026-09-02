@@ -1,0 +1,31 @@
+{
+  "brand": "FamilyChronica",
+  "category": {"primary": "Lifestyle", "secondary": "Photo & Video"},
+  "locales": {
+    "en-US": {
+      "appName": "FamilyChronica",
+      "subtitle": "Preserve Your Family Story",
+      "keywords": "family history,memories,life story,family tree,voice recorder,photo album,legacy,chronicle",
+      "googlePlayShortDescription": "Record family stories, preserve memories, and create a lasting family chronicle.",
+      "promotionalText": "Turn voices, photographs, videos, and family memories into a private living archive and beautiful family chronicle.",
+      "description": "Preserve the stories only your family can tell. FamilyChronica brings voice interviews, photographs, videos, family timelines, albums, and living books into one private family archive.\n\nRECORD STORIES NATURALLY\nUse guided questions or speak freely. Keep the original recording, review the transcript, and approve every AI-assisted edit.\n\nBUILD A FAMILY TIMELINE\nConnect people, dates, places, photographs, audio, and video so every memory keeps its context.\n\nCREATE IT TOGETHER\nInvite relatives with clear roles and memory-level privacy. Every family member can contribute without exposing the entire archive.\n\nMAKE A LASTING EDITION\nPreview and create a text family chronicle, illustrated family history, audio archive, video archive, disc, or encrypted USB edition.\n\nPRIVACY BY DEFAULT\nFamily content remains private, exportable, and under family control."
+    },
+    "zh-CN": {
+      "appName": "FamilyChronica 家族史记",
+      "subtitle": "记录家人故事，珍藏家族记忆",
+      "keywords": "家族史,家庭相册,人生故事,回忆录,家谱,录音,家庭视频,家族传承",
+      "googlePlayShortDescription": "记录家人故事、声音、照片和视频，创建可持续传承的家族史记。",
+      "promotionalText": "把家人的声音、照片、视频和回忆整理成安全私密的家庭档案与家族史记。",
+      "description": "保存只有你的家人才能讲述的故事。FamilyChronica 将语音采访、照片、视频、家庭时间线、相册与家族史记集中在一个私密空间。\n\n自然讲述故事\n通过引导问题或自由讲述记录回忆，保留原始录音，审核文字稿，并确认每一次 AI 辅助整理。\n\n建立家族时间线\n关联人物、日期、地点、照片、录音和视频，让每段回忆保留完整背景。\n\n全家共同参与\n通过清晰角色和单条回忆隐私设置邀请亲属参与，同时保护整个家庭档案。\n\n制作长期保存版本\n可选择家庭史记文字版、相册版、录音、录像、光盘或加密 U 盘等保存载体。\n\n默认保护隐私\n家庭内容保持私密、可导出，并始终由家人掌控。"
+    }
+  },
+  "screenshots": [
+    "Every life deserves to be remembered",
+    "Record family stories in their own voice",
+    "Bring photographs and memories together",
+    "Build a living family timeline",
+    "Invite relatives with clear privacy controls",
+    "Turn your family history into a lasting edition"
+  ],
+  "releaseNotesTemplate": "This update makes preserving family history easier and safer. We improved recording, story review, media organization, family collaboration, privacy controls, and overall reliability."
+}

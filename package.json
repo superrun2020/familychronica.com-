@@ -1,0 +1,11 @@
+{
+  "name": "familychronica-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "seo:generate": "node scripts/generate-seo.mjs",
+    "aso:validate": "node scripts/validate-aso.mjs"
+  }
+}
