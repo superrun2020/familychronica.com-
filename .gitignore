@@ -8,3 +8,5 @@ node_modules/
 *.pem
 coverage/
 dist/
+brand-video-production/
+*.zip
