@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs",
     "seo:generate": "node scripts/generate-seo.mjs",
     "aso:validate": "node scripts/validate-aso.mjs"
   }
