@@ -120,6 +120,10 @@ test('real browser workspace persists safe content, media, members, languages an
 
   await page.locator('#openAi').click();
   await page.locator('#aiWave').click();
+  await page.locator('#recordSourceLanguage').selectOption('en');
+  await page.locator('#recordTargetLanguage').selectOption('zh-CN');
+  assert.equal(await page.locator('#recordSourceLanguage').inputValue(), 'en');
+  assert.equal(await page.locator('#recordTargetLanguage').inputValue(), 'zh-CN');
   assert.equal(await page.locator('#recordPreview').evaluate(video => video.srcObject), null);
   await page.locator('#startRecording').click();
   await page.locator('#recordTimer').waitFor();

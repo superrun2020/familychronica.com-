@@ -17,8 +17,8 @@ test('dashboard is mounted as a real module and production integration uses loca
 test('login and signup SPA entries load the released dashboard stylesheet and script',async()=>{
   for(const entry of ['login','signup']){
     const html=await readFile(new URL(`../${entry}/index.html`,import.meta.url),'utf8');
-    assert.match(html,/dashboard\.css\?v=20260917\.2/);
-    assert.match(html,/app\.js\?v=20260917\.2/);
+    assert.match(html,/dashboard\.css\?v=20260917\.3/);
+    assert.match(html,/app\.js\?v=20260917\.3/);
   }
 });
 

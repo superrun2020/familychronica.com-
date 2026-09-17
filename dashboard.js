@@ -142,7 +142,7 @@ function stopRecorder(recorder) {
 }
 
 async function sendSegment(session, item) {
-  const params = new URLSearchParams({ recordingId: session.id, segmentId: item.id, sequence: String(item.sequence), language: language(), translateTo: language() });
+  const params = new URLSearchParams({ recordingId: session.id, segmentId: item.id, sequence: String(item.sequence), language: session.sourceLanguage, translateTo: session.targetLanguage });
   return request(`/api/auth/workspace/transcription/segments?${params}`, { method: 'POST', body: item.blob, signal: session.controller.signal, headers: { 'Content-Type': item.blob.type.split(';')[0] } });
 }
 
@@ -260,6 +260,8 @@ async function saveRecording(session) {
 
 async function beginRecording(video, audioOnly = false) {
   if (currentSession) return;
+  const sourceLanguage = document.querySelector('#recordSourceLanguage').value;
+  const targetLanguage = document.querySelector('#recordTargetLanguage').value;
   const epoch = ++pendingStartEpoch;
   currentSession = { pending: true, epoch, cancelled: false };
   const startButton = document.querySelector('#startRecording');
@@ -271,7 +273,7 @@ async function beginRecording(video, audioOnly = false) {
   let audioStream, archiveRecorder;
   try { audioStream = new MediaStream(stream.getAudioTracks()); archiveRecorder = new MediaRecorder(stream); }
   catch (error) { stream.getTracks().forEach(track => track.stop()); if (currentSession?.epoch === epoch) currentSession = null; throw error; }
-  const session = { id: crypto.randomUUID(), stream, audioStream, archiveRecorder, controller: new AbortController(), archiveParts: [], archiveBytes: 0, audioMime: supportedAudioMime(), segmentRecorder: null, sequence: 0, pending: [], transcript: [], translation: [], failure: '', draining: false, stopping: false, cancelled: false, startedAt: Date.now() };
+  const session = { sourceLanguage, targetLanguage, id: crypto.randomUUID(), stream, audioStream, archiveRecorder, controller: new AbortController(), archiveParts: [], archiveBytes: 0, audioMime: supportedAudioMime(), segmentRecorder: null, sequence: 0, pending: [], transcript: [], translation: [], failure: '', draining: false, stopping: false, cancelled: false, startedAt: Date.now() };
   if (currentSession?.epoch !== epoch || currentSession.cancelled) { stream.getTracks().forEach(track => track.stop()); audioStream.getTracks().forEach(track => track.stop()); return; }
   currentSession = session;
   if (video) video.srcObject = stream;
@@ -289,11 +291,17 @@ async function beginRecording(video, audioOnly = false) {
 
 function recordPanel(audioOnly = false) {
   const text = t();
-  showPanel(text.record, `<p>${text.permission}</p><div id="recordTimer" class="fc-rec-timer"></div>${audioOnly ? '' : '<video id="recordPreview" autoplay playsinline muted></video>'}<div><button id="startRecording">${text.start}</button><button id="stopRecording" disabled>${text.stop}</button><button id="retrySegments" hidden>${text.retry}</button><button id="savePartial" hidden>Save recording without remaining transcript</button><button id="retrySave" hidden>${text.retrySave}</button></div><h3>${text.transcript}</h3><pre id="liveTranscript"></pre><h3>${text.translation}</h3><pre id="liveTranslation"></pre><p id="recordStatus" role="status"></p>`);
+  showPanel(text.record, `<p>${text.permission}</p><label>${language()==='zh-CN'?'说话语言':language()==='es'?'Idioma hablado':'Spoken language'}<select id="recordSourceLanguage"><option value="auto">Auto / 自动</option><option value="en">English</option><option value="zh-CN">中文</option><option value="es">Español</option></select></label><label>${text.translation}<select id="recordTargetLanguage"><option value="en">English</option><option value="zh-CN">中文</option><option value="es">Español</option></select></label><div id="recordTimer" class="fc-rec-timer"></div>${audioOnly ? '' : '<video id="recordPreview" autoplay playsinline muted></video>'}<div><button id="startRecording">${text.start}</button><button id="stopRecording" disabled>${text.stop}</button><button id="retrySegments" hidden>${text.retry}</button><button id="savePartial" hidden>Save recording without remaining transcript</button><button id="retrySave" hidden>${text.retrySave}</button></div><h3>${text.transcript}</h3><pre id="liveTranscript"></pre><h3>${text.translation}</h3><pre id="liveTranslation"></pre><p id="recordStatus" role="status"></p>`);
+  document.querySelector('#recordTargetLanguage').value = language();
   const video = document.querySelector('#recordPreview');
   document.querySelector('#startRecording').onclick = async () => {
     try { await beginRecording(video, audioOnly); }
-    catch (error) { cancelRecording(); document.querySelector('#recordStatus').textContent = error.message; }
+    catch (error) {
+      cancelRecording();
+      const status = document.querySelector('#recordStatus');
+      if (status) status.textContent = error.message;
+      document.querySelector('#startRecording')?.removeAttribute('disabled');
+    }
   };
   document.querySelector('#stopRecording').onclick = () => finishRecording(currentSession);
   document.querySelector('#retrySegments').onclick = async () => {

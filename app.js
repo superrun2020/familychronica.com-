@@ -1,6 +1,6 @@
 import { applyTranslations, getLanguage, setLanguage } from './i18n.js?v=20260830.1';
 import { seoRoutes } from './seo.js?v=20260830.3';
-import { dashboardMarkup, mountFamilyDashboard, releaseDashboardMedia } from './dashboard.js?v=20260917.2';
+import { dashboardMarkup, mountFamilyDashboard, releaseDashboardMedia } from './dashboard.js?v=20260917.3';
 
 const main = document.querySelector('#main');
 const toast = document.querySelector('#toast');
