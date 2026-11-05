@@ -141,12 +141,13 @@ function renderPrivacyMarkdown(markdown) {
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g, '<a href="$2">$1</a>');
   const renderBlocks = source => {
+    const sourceLines = Array.isArray(source) ? source : source.split('\n');
     const blocks = [];
     let paragraph = [];
     let list = [];
     const flushParagraph = () => { if (paragraph.length) { blocks.push(`<p>${inline(paragraph.join(' '))}</p>`); paragraph = []; } };
     const flushList = () => { if (list.length) { blocks.push(`<ul>${list.map(item => `<li>${inline(item)}</li>`).join('')}</ul>`); list = []; } };
-    for (const line of [...source, '']) {
+    for (const line of [...sourceLines, '']) {
       if (/^### /.test(line)) { flushParagraph(); flushList(); blocks.push(`<h3>${inline(line.slice(4))}</h3>`); }
       else if (/^- /.test(line)) { flushParagraph(); list.push(line.slice(2)); }
       else if (!line.trim()) { flushParagraph(); flushList(); }
